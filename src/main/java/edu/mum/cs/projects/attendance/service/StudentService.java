@@ -21,6 +21,7 @@ public interface StudentService {
 	List<Student> getStudentsByEntry(String entryDate);
 	
 	String getBarcodeId(String studentId);
+	List<Student> getAllStudents();
 
 	static StudentService getInstance() {
 		return INSTANCE;

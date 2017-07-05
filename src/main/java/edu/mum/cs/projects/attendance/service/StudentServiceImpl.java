@@ -58,5 +58,9 @@ public class StudentServiceImpl implements StudentService {
 	public List<Student> getStudentsByEntry(String entryDate) {
 		return studentRepository.findByEntryDate(DateUtil.convertStringToDate(entryDate));
 	}
+	@Override
+	public List<Student> getAllStudents() {
+		return studentRepository.findAll();
+	}
 
 }
