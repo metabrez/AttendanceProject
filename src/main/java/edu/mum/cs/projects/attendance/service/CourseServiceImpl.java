@@ -16,6 +16,7 @@ import edu.mum.cs.projects.attendance.domain.entity.CourseOffering;
 import edu.mum.cs.projects.attendance.domain.entity.Enrollment;
 import edu.mum.cs.projects.attendance.repository.AcademicBlockRepository;
 import edu.mum.cs.projects.attendance.repository.CourseOfferingRepository;
+import edu.mum.cs.projects.attendance.repository.CourseRepository;
 import edu.mum.cs.projects.attendance.util.DateUtil;
 
 /**
@@ -40,6 +41,8 @@ public class CourseServiceImpl implements CourseService {
 	@Autowired
 	AcademicBlockRepository academicBlockRepository;
 
+	@Autowired
+	private CourseRepository courseRepository;
 	@Override
 	public List<ComproEntry> getComproEntries(String startDate) {
 		Course course = new Course("Entry");
@@ -75,5 +78,19 @@ public class CourseServiceImpl implements CourseService {
 				.filter(o -> Enrollment.Status.SIGNEDUP.toString().equalsIgnoreCase(o.getStatus()))
 				.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Course> getAllCourses() {
+		
+		return courseRepository.findAll();
+	}
+
+	@Override
+	public List<CourseOffering> getCourseOffering() {
+		
+		return courseOfferingRepository.findAll();
+	}
+	
+	
 
 }

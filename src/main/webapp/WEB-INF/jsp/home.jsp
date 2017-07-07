@@ -10,5 +10,10 @@
 
 <h1>Welcome to homepage</h1>
 
+<div><a href="students">StudentList</a></div>
+<div><a href="courseOfferings">Course Offerings</a></div>
+<div><a href="timeSlots">Time Slots</a></div>
+<div><a href="courses">Course List</a></div>
+<div><a href="locations">Locations</a></div>
 </body>
 </html>

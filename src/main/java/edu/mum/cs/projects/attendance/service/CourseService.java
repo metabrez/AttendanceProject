@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.mum.cs.projects.attendance.domain.ComproEntry;
 import edu.mum.cs.projects.attendance.domain.entity.AcademicBlock;
+import edu.mum.cs.projects.attendance.domain.entity.Course;
 import edu.mum.cs.projects.attendance.domain.entity.CourseOffering;
 import edu.mum.cs.projects.attendance.domain.entity.Enrollment;
 
@@ -26,5 +27,8 @@ public interface CourseService {
 	List<CourseOffering> getCourseOfferings(String blockId);
 
 	AcademicBlock getAcademicBlock(String blockStartDate);
+	
+	List<Course> getAllCourses();
+	List<CourseOffering> getCourseOffering();
 	
 }

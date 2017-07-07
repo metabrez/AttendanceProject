@@ -13,4 +13,5 @@ import edu.mum.cs.projects.attendance.domain.entity.CourseOffering;
 public interface CourseOfferingRepository extends CrudRepository<CourseOffering, Integer> {
 	List<CourseOffering> findByStartDate(Date startDate);
 	List<CourseOffering> findByCourse(Course course);
+	List<CourseOffering> findAll();
 }
