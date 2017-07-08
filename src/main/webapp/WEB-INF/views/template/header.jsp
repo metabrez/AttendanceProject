@@ -65,6 +65,8 @@
                         <li><a href="#contact">Contact</a></li>
                         <li><a href=<c:url value="/studentDetails/students"/>>Student Details</a></li>
                           <li><a href=<c:url value="/studentDetails/courseOfferings"/>>Course Offerings</a></li>
+                           <li><a href=<c:url value="/courseList"/>>StudentCourse List</a></li>
+                            <li><a href=<c:url value="/studentAttendace"/>>StudentAttendace List</a></li>
                         
 
                     </ul>
