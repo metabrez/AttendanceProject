@@ -11,5 +11,7 @@ import edu.mum.cs.projects.attendance.domain.entity.Course;
 public interface CourseRepository extends CrudRepository<Course, String> {
 	
 	List<Course> findAll();
+	
+	
 
 }

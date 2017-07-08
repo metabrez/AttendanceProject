@@ -90,6 +90,12 @@ public class CourseServiceImpl implements CourseService {
 		
 		return courseOfferingRepository.findAll();
 	}
+
+	@Override
+	public List<Course> getAllCoursesByStudentId(String studentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

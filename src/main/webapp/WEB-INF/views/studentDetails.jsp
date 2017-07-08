@@ -1,12 +1,12 @@
-<%@include file="/WEB-INF/views/template/header.jsp" %>
+<%@include file="/WEB-INF/views/template/header.jsp"%>
 
 
 <div class="container-wrapper">
-    <div class="container">
-        <div id="login-box">
-            <h2>Studnt Details Information</h2>
+	<div class="container">
+		<div id="login-box">
+			<h2>Studnt Details Information</h2>
 
-           <%--  <c:if test="${not empty msg}">
+			<%--  <c:if test="${not empty msg}">
                 <div class="msg">${msg}</div>
             </c:if>
 
@@ -27,13 +27,23 @@
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form> --%>
-            
-           <div><a href="students">StudentList</a></div>
-<div><a href="courseOfferings">Course Offerings</a></div>
-<div><a href="timeSlots">Time Slots</a></div>
-<div><a href="courses">Course List</a></div>
-<div><a href="locations">Locations</a></div>
-        </div>
-    </div>
+
+			<div>
+				<a href="students">StudentList</a>
+			</div>
+			<div>
+				<a href="courseOfferings">Course Offerings</a>
+			</div>
+			<div>
+				<a href="timeSlots">Time Slots</a>
+			</div>
+			<div>
+				<a href="courses">Course List</a>
+			</div>
+			<div>
+				<a href="locations">Locations</a>
+			</div>
+		</div>
+	</div>
 </div>
-<%@include file="/WEB-INF/views/template/footer.jsp" %>
+<%@include file="/WEB-INF/views/template/footer.jsp"%>
