@@ -1,6 +1,7 @@
 package edu.mum.cs.projects.attendance.service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -14,9 +15,11 @@ import edu.mum.cs.projects.attendance.domain.entity.AcademicBlock;
 import edu.mum.cs.projects.attendance.domain.entity.Course;
 import edu.mum.cs.projects.attendance.domain.entity.CourseOffering;
 import edu.mum.cs.projects.attendance.domain.entity.Enrollment;
+import edu.mum.cs.projects.attendance.domain.entity.Student;
 import edu.mum.cs.projects.attendance.repository.AcademicBlockRepository;
 import edu.mum.cs.projects.attendance.repository.CourseOfferingRepository;
 import edu.mum.cs.projects.attendance.repository.CourseRepository;
+import edu.mum.cs.projects.attendance.repository.EnrollmentRepository;
 import edu.mum.cs.projects.attendance.util.DateUtil;
 
 /**
@@ -43,6 +46,10 @@ public class CourseServiceImpl implements CourseService {
 
 	@Autowired
 	private CourseRepository courseRepository;
+	
+	@Autowired
+	private EnrollmentRepository enrollmentRepository;
+	
 	@Override
 	public List<ComproEntry> getComproEntries(String startDate) {
 		Course course = new Course("Entry");
@@ -92,11 +99,37 @@ public class CourseServiceImpl implements CourseService {
 	}
 
 	@Override
-	public List<Course> getAllCoursesByStudentId(String studentId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Course> getCourseListByStudentId(String studentId) {
+	
+		List<Course> courseList = new ArrayList<>();
+		List<Enrollment> enrollmentListByStudentId = new ArrayList<>();
+		
+		//get student object from session using studentId
+		Student student = new Student();
+		student.setStudentId(studentId);
+		
+			
+		//find list of  enrollment according to studentId
+		for(Enrollment e : enrollmentRepository.findAll()){
+			if(e.getStudent().equals(student)){
+				enrollmentListByStudentId.add(e);
+			}
+		}
+		
+		
+		//find list of course according to enrollment(course offerring)
+		
+		for(Enrollment e: enrollmentListByStudentId){
+			for(CourseOffering co : courseOfferingRepository.findAll()){
+				if(co.equals(e.getOffering())){
+					courseList.add(co.getCourse());
+					continue;
+				}
+			}
+		}		
+		
+		return courseList;
 	}
-	
-	
 
+	
 }

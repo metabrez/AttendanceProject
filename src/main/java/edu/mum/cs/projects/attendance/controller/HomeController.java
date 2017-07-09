@@ -4,21 +4,21 @@ package edu.mum.cs.projects.attendance.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+import edu.mum.cs.projects.attendance.domain.StudentAttendance;
 import edu.mum.cs.projects.attendance.domain.entity.Course;
 import edu.mum.cs.projects.attendance.domain.entity.CourseOffering;
 import edu.mum.cs.projects.attendance.domain.entity.Faculty;
 import edu.mum.cs.projects.attendance.domain.entity.Location;
 import edu.mum.cs.projects.attendance.domain.entity.Student;
 import edu.mum.cs.projects.attendance.domain.entity.Timeslot;
-import edu.mum.cs.projects.attendance.repository.RoleRepository;
+
+import edu.mum.cs.projects.attendance.service.AttendanceServiceImpl;
 import edu.mum.cs.projects.attendance.service.CourseServiceImpl;
 import edu.mum.cs.projects.attendance.service.LocationServiceImpl;
 import edu.mum.cs.projects.attendance.service.StudentServiceImpl;
@@ -43,8 +43,10 @@ public class HomeController {
 	@Autowired
 	private LocationServiceImpl locationServiceImpl;
 
+	
+	
 	@Autowired
-	private RoleRepository roleRepository;
+	private AttendanceServiceImpl attendanceServiceImpl;
 
 	/*
 	 * @GetMapping({ "/", "/index", "/home" }) public ModelAndView homePage() {
@@ -61,6 +63,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String homePage() {
 
+		/*attendanceServiceImpl.createAttendanceReportForEntry("2017-04-27");*/
 		return "home";
 
 	}
@@ -72,8 +75,10 @@ public class HomeController {
 	}
 	
 	@GetMapping("/courseList")
-	public String CourseList() {
-
+	public String CourseList(Model model) {
+		List<Course> courseListByStudentId = courseServiceImpl.getCourseListByStudentId("000-98-0124");
+		model.addAttribute("courseList",courseListByStudentId);
+		System.out.println("List of course list ................................\n."+courseListByStudentId);
 		return "courseList";
 	}
 	@GetMapping("/attendanceList")
@@ -148,7 +153,26 @@ public class HomeController {
 
 		return "location";
 	}
-
+	
+	@GetMapping("/studentAttendance")
+	public String  retrieveStudentAttendanceRecords(Model model,CourseOffering courseOffering){
+		
+		
+		List<CourseOffering> offers=courseSeviceImpl.getCourseOfferings("2017-06-26");
+		List<StudentAttendance> studentAttendance =  attendanceServiceImpl.retrieveStudentAttendanceRecords(offers.get(0));
+		
+		model.addAttribute("studentAttendance", studentAttendance);
+		
+		for(StudentAttendance attendance:studentAttendance){
+			
+			System.out.println("TAbrez" +attendance.getAttendance());
+		}
+		
+		
+		
+		return "studentAttendance";
+		
+	}
 	/*
 	 * public String addStudent(Model model){
 	 * 

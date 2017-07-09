@@ -26,10 +26,10 @@ public interface CourseService {
 
 	List<CourseOffering> getCourseOfferings(String blockId);
 
-	AcademicBlock getAcademicBlock(String blockStartDate);
-	
-	List<Course> getAllCoursesByStudentId(String studentId);
+	AcademicBlock getAcademicBlock(String blockStartDate);	
 	List<Course> getAllCourses();
 	List<CourseOffering> getCourseOffering();
+	
+	List<Course> getCourseListByStudentId(String studentId);
 	
 }

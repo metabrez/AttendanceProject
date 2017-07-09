@@ -26,10 +26,10 @@
     </tr>
 
     </thead>
-    <c:forEach items="${students}" var="student">
+    <%-- <c:forEach items="${students}" var="student">
 
     <tr>
-        <%-- <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image" style="width:100%"/> </td> --%>
+        <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image" style="width:100%"/> </td>
          <td>${student.studentId}</td>
         <td>${student.firstName}</td>
         <td>${student.lastName}</td>
@@ -37,10 +37,10 @@
         <td>${student.enrolment.attendance}</td>
         <td>${student.barcode}</td>
        
-       <%--  <td><a href="<spring:url value="//${student.studentId}"/>"><span class="glyphicon glyphicon-info-sign"></span></a> </td>
- --%>
+        <td><a href="<spring:url value="//${student.studentId}"/>"><span class="glyphicon glyphicon-info-sign"></span></a> </td>
+
     </tr>
-    </c:forEach>
+    </c:forEach> --%>
 </table>
 
         </div>

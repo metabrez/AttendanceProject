@@ -20,10 +20,6 @@ public interface StudentService {
 	
 	List<Student> getStudentsByEntry(String entryDate);
 	
-	/* Student getStudentById(long id);
-	*/
-	
-	
 	String getBarcodeId(String studentId);
 	List<Student> getAllStudents();
 	
